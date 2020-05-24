@@ -10,17 +10,14 @@ export default function App() {
     <View style={styles.container}>
       <Text style={styles.titulo}>Calculadora IMC</Text>
       <View>
-        <Text style={styles.label}>Peso</Text>
+        <Text style={styles.labelFormulario}>Peso</Text>
         <TextInput style={styles.input}></TextInput>
-        <Text style={styles.label}>Altura</Text>
+        <Text style={styles.labelFormulario}>Altura</Text>
         <TextInput style={styles.input}></TextInput>
       </View>
       <View style={styles.buttons}>
         <TouchableOpacity style={styles.buttonCalcular}>
           <Text style={styles.labelCalcular}>Calcular</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.buttonGravar}>
-          <Text style={styles.labelGravar}>Gravar</Text>
         </TouchableOpacity>
       </View>
       <ScrollView>

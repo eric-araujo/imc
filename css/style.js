@@ -33,7 +33,7 @@ export default StyleSheet.create({
     borderRadius: 10,
   },
 
-  label: {
+  labelFormulario: {
     position: 'relative',
     marginTop: '10%',
     fontFamily: 'Roboto',
@@ -51,42 +51,21 @@ export default StyleSheet.create({
     color: '#FFF',
   },
 
-  labelGravar: {
-    fontFamily: 'Roboto',
-    fontStyle: 'normal',
-    fontWeight: '500',
-    fontSize: 16,
-    color: '#567DF4',
-  },
-
   buttons: {
-    height: '12%',
     flexDirection: 'row',
     marginTop: '14%',
-    marginRight: '2%',
-    marginLeft: '2%',
     justifyContent: 'space-between',
     alignItems: 'center',
   },
 
   buttonCalcular: {
-    width: '49%',
+    width: '100%',
     height: 50,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 10,
     padding: 10,
     backgroundColor: "#567DF4",
-  },
-
-  buttonGravar: {
-    width: '49%',
-    height: 50,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 10,
-    padding: 10,
-    backgroundColor: 'rgba(86, 125, 244, 0.1)',
   },
 
   labelCard: {
@@ -100,7 +79,7 @@ export default StyleSheet.create({
   },
 
   cartao: {
-    marginBottom: 6,
+    marginBottom: 8,
     borderWidth: 2,
     borderColor: '#EEF2FE',
     borderStyle: 'solid',
