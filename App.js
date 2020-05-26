@@ -10,31 +10,8 @@ export default function App() {
   const [nome, setNome] = useState('');
   const [peso, setPeso] = useState(0);
   const [altura, setAltura] = useState(0);
-  const [imc, setIMC] = useState(0);
-  const [mensagem, setMensagem] = useState('');
-  //const [objUsuarios, setObjUsuarios] = useState({});
 
-
-  const objUsuarios = [
-    {
-      nome: 'Eric Araújo Lima',
-      imc: '25.00',
-      mensagem: 'Sobrepeso',
-
-    },
-    {
-      nome: 'Eric Araújo Lima',
-      imc: '25.00',
-      mensagem: 'Sobrepeso',
-
-    },
-    {
-      nome: 'Eric Araújo Lima',
-      imc: '25.00',
-      mensagem: 'Sobrepeso',
-
-    },
-  ];
+  const [objUsuarios, setObjUsuarios] = useState([{}]);
 
   function Card({ nome, imc, mensagem }) {
     return (
@@ -50,6 +27,7 @@ export default function App() {
   function CalcularIMC() {
 
     const imc = peso / (altura / 100 * altura / 100);
+
     const parseIMC = parseFloat(imc.toFixed(2));
 
     let mensagem = "";
@@ -80,27 +58,24 @@ export default function App() {
 
     }
 
-    setMensagem(mensagem);
-    setIMC(parseIMC);
-
+    Cadastrar(parseIMC, mensagem);
 
   }
 
-  async function Cadastrar() {
+  async function Cadastrar(imc, mensagem) {
 
-    await CalcularIMC();
-
-    const objUsuario = [
-      {
+    const objUsuario =
+      [{
         nome: nome,
         imc: imc,
         mensagem: mensagem,
-      }
-    ]
+      }];
 
     await AsyncStorage.setItem('usuario', JSON.stringify(objUsuario)).then(() => {
 
       Alert.alert("Cadastrado com sucesso!");
+
+      retornaRegistros();
 
     }).catch(error => {
 
@@ -110,17 +85,26 @@ export default function App() {
 
   }
 
-  /*async function retornaRegistros(){
+  async function retornaRegistros() {
 
-    Alert.alert(JSON.stringify(AsyncStorage.getItem('usuario')));
+    await AsyncStorage.getItem('usuario').then((data) => {
+
+      setObjUsuarios(JSON.parse(data));
+
+    }).catch(error => {
+
+      Alert.alert("ERRO", error);
+
+    });
 
   }
 
-  useEffect(()=>{
+  useEffect(() => {
 
     retornaRegistros();
 
-  },[]);*/
+  }, []);
+
 
   return (
     <View style={styles.container}>
@@ -134,13 +118,14 @@ export default function App() {
         <TextInput name="altura" keyboardType="numeric" style={styles.input} onChangeText={(altura) => setAltura(altura)}></TextInput>
       </View>
       <View style={styles.buttons}>
-        <TouchableOpacity style={styles.buttonCalcular} onPress={() => { Cadastrar() }}>
+        <TouchableOpacity style={styles.buttonCalcular} onPress={() => { CalcularIMC() }}>
           <Text style={styles.labelCalcular}>Calcular</Text>
         </TouchableOpacity>
       </View>
       <FlatList
         data={objUsuarios}
         renderItem={({ item }) => <Card nome={item.nome} imc={item.imc} mensagem={item.mensagem} />}
+        keyExtractor={(item, index) => index.toString()}
       />
     </View>
   );
