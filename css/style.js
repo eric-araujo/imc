@@ -31,6 +31,8 @@ export default StyleSheet.create({
     borderColor: '#EEF2FE',
     borderStyle: 'solid',
     borderRadius: 10,
+    padding: 10,
+    fontSize: 20,
   },
 
   labelFormulario: {
@@ -61,6 +63,7 @@ export default StyleSheet.create({
   buttonCalcular: {
     width: '100%',
     height: 50,
+    marginBottom: 30,
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 10,
