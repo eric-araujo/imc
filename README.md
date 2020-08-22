@@ -21,7 +21,7 @@ Use o yarn para instalar as dependências do Calculadora IMC.
 
 :warning: Obs:Para executar o Calculadora IMC no seu celular instale o aplicativo [Expo](https://play.google.com/store/apps/details?id=host.exp.exponent&hl=pt_BR).
 
-Inicie o servidor executando o comendo.
+Inicie o servidor executando o comando.
 
 ```
   expo start
